@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
+import { startSetExpenses } from './actions/expenses';
 import { addExpense } from './actions/expenses';
 import { setTextFilter } from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
@@ -10,25 +11,21 @@ import './styles/styles.scss';
 import './firebase/firebase';
 
 const store = configureStore();
-
-store.dispatch(addExpense({ description: 'Water bill', amount: 4500}));
-store.dispatch(addExpense({ description: 'Gas bill',  amount: 5000}));
-store.dispatch(addExpense({ description: 'Rent', amount: 109500}));
-store.dispatch(setTextFilter('water'));
-
-setTimeout(() => {
-	store.dispatch(setTextFilter('bill'));
-}, 3000)
-
-const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-console.log(visibleExpenses);
-
 const jsx = (
-	<Provider store={store}>
-		<AppRouter />
-	</Provider>
-
+  <Provider store={store}>
+    <AppRouter />
+  </Provider>
 );
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('#root'));
+    hasRendered = true;
+  }
+};
 
-ReactDOM.render(jsx, document.querySelector('#root'));
+ReactDOM.render(<p>Loading...</p>, document.querySelector('#root'));
+
+store.dispatch(startSetExpenses()).then(() => {
+	ReactDOM.render(jsx, document.querySelector('#root'));
+});
