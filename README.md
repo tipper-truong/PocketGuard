@@ -1,3 +1,9 @@
-# Expensify
+# PocketGuard
 
-## Ever feel like where did my money go? <br /> Let us track it for you!
+## TechStack
+React, Redux, Firebase
+
+PocketGuard is a web application that helps users to organize and manage their expenses
+
+## Demo
+https://pocketguard.herokuapp.com/dashboard
