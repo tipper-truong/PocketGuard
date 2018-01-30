@@ -7,4 +7,4 @@ PocketGuard is a web application that helps users to organize and manage their e
 React, Redux, Firebase
 
 ### Demo
-https://pocketguard.herokuapp.com/dashboard
+https://pocketguard.herokuapp.com/
