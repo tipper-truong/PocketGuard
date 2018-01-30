@@ -5,5 +5,5 @@ React, Redux, Firebase
 
 PocketGuard is a web application that helps users to organize and manage their expenses
 
-## Demo
+# Demo
 https://pocketguard.herokuapp.com/dashboard
